@@ -1,0 +1,30 @@
+SOLUTION FOR DAY 20-LEETCODE MAY CHALLENGE
+
+***class Solution:
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        r=len(matrix)
+        c=len(matrix[0])
+        arr=[[]]*r
+        for i in range(0,r):
+              arr[i]=[0]*c
+        s=0    
+       
+        for i in range(0,r):
+                for j in range(0,c):
+                    if matrix[i][j]==1 and i>0 and j>0:
+                        if arr[i-1][j]>0 and arr[i][j-1]> 0 and arr[i-1][j-1]>0:
+                            arr[i][j]=min(min(arr[i-1][j-1],arr[i-1][j]),arr[i][j-1])+1
+                            
+                            s+=arr[i][j]
+                           
+                        else:
+                            arr[i][j]=1
+                            s+=arr[i][j]
+                    elif matrix[i][j]==1:
+                        arr[i][j]=matrix[i][j]
+                        s+=1
+                    else:
+                        arr[i][j]=matrix[i][j]
+       
+        return(s)
+***
